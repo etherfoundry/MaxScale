@@ -236,12 +236,12 @@ poll_init()
         }
     }
 
-    if ((fake_events = MXS_CALLOC(sizeof(fake_event_t*), n_threads)) == NULL)
+    if ((fake_events = MXS_CALLOC(n_threads, sizeof(fake_event_t*))) == NULL)
     {
         exit(-1);
     }
 
-    if ((fake_event_lock = MXS_CALLOC(sizeof(SPINLOCK), n_threads)) == NULL)
+    if ((fake_event_lock = MXS_CALLOC(n_threads, sizeof(SPINLOCK))) == NULL)
     {
         exit(-1);
     }
