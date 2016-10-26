@@ -450,6 +450,7 @@ poll_remove_dcb(DCB *dcb)
      */
     dcbfd = dcb->fd;
     spinlock_release(&dcb->dcb_initlock);
+
     if (dcbfd > 0)
     {
         rc = epoll_ctl(epoll_fd[dcb->owner], EPOLL_CTL_DEL, dcbfd, &ev);
