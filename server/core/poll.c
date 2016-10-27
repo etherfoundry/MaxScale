@@ -843,12 +843,11 @@ poll_set_maxwait(unsigned int maxwait)
 static int
 process_pollq(int thread_id, struct epoll_event *event)
 {
-    int found = 0;
     uint32_t ev = event->events;
     unsigned long qtime;
 
     DCB *dcb = event->data.ptr;
-
+    ss_dassert(dcb->owner == thread_id);
 #if PROFILE_POLL
     memlog_log(plog, hkheartbeat - dcb->evq.inserted);
 #endif
